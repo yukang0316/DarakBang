@@ -1,7 +1,7 @@
 package hello.imagine.community.service;
 
 import hello.imagine.community.dto.CommentDTO;
-import hello.imagine.community.model.Category;
+import hello.imagine.community.model.CommunityCategory;
 import hello.imagine.community.model.Comment;
 import hello.imagine.community.model.Post;
 import hello.imagine.community.repository.CategoryRepository;
@@ -34,17 +34,9 @@ public class CommentService {
         Comment comment = new Comment();
         comment.setContent(commentDTO.getContent());
 
-        Category category = categoryRepository.findById(commentDTO.getCategoryId())
-                .orElseThrow(() -> new RuntimeException("Category with ID " + commentDTO.getCategoryId() + " not found"));
-        comment.setCategory(category);
-
         Post post = postRepository.findById(commentDTO.getPostId())
                 .orElseThrow(() -> new RuntimeException("Post with ID " + commentDTO.getPostId() + " not found"));
         comment.setPost(post);
-
-        Member author = memberRepository.findById(commentDTO.getAuthorId())
-                .orElseThrow(() -> new RuntimeException("Author with ID " + commentDTO.getAuthorId() + " not found"));
-        comment.setAuthor(author);
 
         LocalDateTime now = LocalDateTime.now();
         comment.setCreatedAt(now);
@@ -54,19 +46,19 @@ public class CommentService {
     }
 
     public List<Comment> getCommentsByPostId(Long postId) {
-        return commentRepository.findByPostId(postId);
+        return commentRepository.findByPostPostId(postId);
     }
 
-    public Comment updateComment(Long id, CommentDTO commentDTO) {
-        Comment comment = commentRepository.findById(id)
+    public Comment updateComment(Long commentId, CommentDTO commentDTO) {
+        Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new RuntimeException("Comment not found"));
         comment.setContent(commentDTO.getContent());
         comment.setUpdatedAt(LocalDateTime.now());
         return commentRepository.save(comment);
     }
 
-    public void deleteComment(Long id) {
-        Comment comment = commentRepository.findById(id)
+    public void deleteComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new RuntimeException("Comment not found"));
         commentRepository.delete(comment);
     }

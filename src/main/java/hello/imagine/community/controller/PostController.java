@@ -1,6 +1,7 @@
 package hello.imagine.community.controller;
 
 import hello.imagine.community.dto.PostDTO;
+import hello.imagine.community.model.CommunityCategory;
 import hello.imagine.community.model.Post;
 import hello.imagine.community.service.PostService;
 import hello.imagine.util.JwtUtil;
@@ -59,7 +60,7 @@ public class PostController {
     @GetMapping("/{id}")
     public ResponseEntity<Long> getPost(@PathVariable Long id) {
         Post post = postService.getPostById(id);
-        return ResponseEntity.ok(post.getId());
+        return ResponseEntity.ok(post.getPostId());
     }
 
     // 게시글 수정

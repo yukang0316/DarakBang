@@ -1,18 +1,15 @@
 package hello.imagine.myPage.service;
 
-import hello.imagine.community.model.ChatRoom;
 import hello.imagine.community.model.Post;
 import hello.imagine.login.model.Member;
 import hello.imagine.meeting.model.Meeting;
 import hello.imagine.myPage.entity.Mypage;
-import hello.imagine.myPage.entity.MypageId;
 import hello.imagine.myPage.entity.Mypage_Meetinglist;
 
 import java.util.List;
 
 public interface MypageService {
     Mypage getMypageByMemberId(Long memberId); // 회원의 Mypage 정보 조회
-    Mypage findById(MypageId mypageId);
     Mypage findByNickname(String nickname);
     Mypage findByPoints(int points);
     Mypage findByEmail(String email);
@@ -35,7 +32,6 @@ public interface MypageService {
     // 커뮤니티 내역 조회
     List<Post> getWrittenPosts(Member member);
     List<Post> getLikedPosts(Member member);
-    List<ChatRoom> getParticipatingChatRooms(Member member);
 
     // 마이페이지 저장 또는 업데이트
     Mypage save(Mypage mypage);

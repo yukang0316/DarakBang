@@ -20,7 +20,7 @@ public class PostDTO {
 
     // Post 엔티티를 인자로 받는 생성자 추가
     public PostDTO(Post post) {
-        this.id = post.getId();
+        this.id = post.getPostId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.authorId = post.getAuthor().getId();  // Member ID 추출

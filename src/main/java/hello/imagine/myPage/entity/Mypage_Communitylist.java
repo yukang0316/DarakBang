@@ -1,6 +1,5 @@
 package hello.imagine.myPage.entity;
 
-import hello.imagine.community.model.ChatRoom;
 import hello.imagine.community.model.Post;
 import hello.imagine.login.model.Member;
 import jakarta.persistence.*;
@@ -35,14 +34,6 @@ public class Mypage_Communitylist {
     )
     private List<Post> likedPosts;
 
-    // 사용자가 참여 중인 채팅방 목록
-    @ManyToMany
-    @JoinTable(
-            name = "mypage_chatrooms",
-            joinColumns = @JoinColumn(name = "mypage_community_id"),
-            inverseJoinColumns = @JoinColumn(name = "chatroom_id")
-    )
-    private List<ChatRoom> chatRooms;
 
     // 기본 생성자
     public Mypage_Communitylist() {}
@@ -81,11 +72,4 @@ public class Mypage_Communitylist {
         this.likedPosts = likedPosts;
     }
 
-    public List<ChatRoom> getChatRooms() {
-        return chatRooms;
-    }
-
-    public void setChatRooms(List<ChatRoom> chatRooms) {
-        this.chatRooms = chatRooms;
-    }
 }

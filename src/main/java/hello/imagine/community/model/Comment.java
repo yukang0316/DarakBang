@@ -1,8 +1,8 @@
 package hello.imagine.community.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import hello.imagine.login.model.Member;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,23 +14,24 @@ import java.time.LocalDateTime;
 public class Comment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "comment_id", insertable = false, updatable = false)
+    private Long commentId;
 
+    // post_id 외래키 & 복합키 일부
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    @JsonIgnore
-    private Category category;
-
-    @ManyToOne
-    @JoinColumn(name = "post_id", nullable = false)
+    @JoinColumn(name = "post_id")
     @JsonIgnore
     private Post post;
 
     @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnore
+    private CommunityCategory category;
+
+    @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
     @JsonIgnore
-    private Member author;
+    private Member member;
 
     @Column(nullable = false)
     private String content;

@@ -1,11 +1,15 @@
 package hello.imagine.meeting.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import hello.imagine.login.model.Affiliation;
 import hello.imagine.login.model.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -46,6 +50,10 @@ public class Meeting {
     @ManyToOne
     @JoinColumn(name = "leader_id")
     private Member leader;
+
+    // Meeting.java
+    @OneToMany(mappedBy = "meeting")
+    private List<Affiliation> affiliations = new ArrayList<>();
 
 
     // 멤버와 소모임 연결
@@ -148,4 +156,5 @@ public class Meeting {
     public void setMembers(Set<Member> members) {
         this.members = members;
     }
+
 }

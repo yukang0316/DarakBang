@@ -1,12 +1,10 @@
 package hello.imagine.myPage.controller;
 
-import hello.imagine.community.model.ChatRoom;
 import hello.imagine.community.model.Post;
 import hello.imagine.login.model.Member;
 import hello.imagine.login.repository.MemberRepository;
 import hello.imagine.meeting.model.Meeting;
 import hello.imagine.myPage.entity.Mypage;
-import hello.imagine.myPage.entity.MypageId;
 import hello.imagine.myPage.entity.Mypage_Meetinglist;
 import hello.imagine.myPage.repository.MyPageRepository;
 import hello.imagine.myPage.service.MypageService;
@@ -31,16 +29,6 @@ public class MypageController {
         this.myPageRepository = myPageRepository; // Fixed constructor
     }
 
-    // Member ID로 Mypage에서 닉네임 조회
-    @GetMapping("/nickname/{memberId}")
-    public ResponseEntity<String> getNicknameByMemberId(@PathVariable Long memberId) {
-        // memberId로 Mypage 엔티티를 조회
-        Mypage mypage = mypageService.findById(new MypageId(memberId));
-        if (mypage == null) {
-            return ResponseEntity.notFound().build(); // Handle case where Mypage is not found
-        }
-        return ResponseEntity.ok(mypage.getNickname()); // Return nickname
-    }
 
     // GET 요청으로 Member ID를 받아 Mypage를 업데이트
     @PostMapping("/updateFromMember")
@@ -73,20 +61,6 @@ public class MypageController {
         return ResponseEntity.ok(updatedMypage);
     }
 
-    // Member ID로 포인트 조회
-    @GetMapping("/points/{memberId}")
-    public ResponseEntity<Integer> getPointsByMemberId(@PathVariable Long memberId) {
-        // Member ID로 Member 엔티티를 조회
-        Member member = memberRepository.findById(memberId).orElse(null);
-        if (member == null) {
-            // Member가 존재하지 않을 경우 오류 응답 반환
-            return ResponseEntity.notFound().build();
-        }
-
-        // Member의 닉네임으로 Mypage 조회 후 포인트 반환
-        Mypage mypage = mypageService.findByNickname(member.getNickname());
-        return ResponseEntity.ok(mypage.getPoints());
-    }
 
     // 소모임 내역 조회
     @GetMapping("/meetings/{memberId}")
@@ -142,15 +116,4 @@ public class MypageController {
         return ResponseEntity.ok(posts);
     }
 
-    // 참여하고 있는 채팅방 확인
-    @GetMapping("/community/chatrooms/{memberId}")
-    public ResponseEntity<List<ChatRoom>> getParticipatingChatRooms(@PathVariable Long memberId) {
-        // memberId로 Member 객체를 조회
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new RuntimeException("Member not found"));
-
-        // 참여하고 있는 채팅방 목록 반환
-        List<ChatRoom> chatRooms = mypageService.getParticipatingChatRooms(member);
-        return ResponseEntity.ok(chatRooms);
-    }
 }

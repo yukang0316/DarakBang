@@ -1,7 +1,6 @@
 package hello.imagine.community.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import hello.imagine.login.model.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,7 +18,8 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "post_id")
+    private Long postId;
 
     private String title;
     private String content;
@@ -28,9 +28,9 @@ public class Post {
     private List<Comment> comments;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "community_category_id")
     @JsonBackReference
-    private Category category;
+    private CommunityCategory category;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
@@ -45,10 +45,6 @@ public class Post {
     // 좋아요를 누른 사용자의 ID를 저장하는 필드
     @ElementCollection
     private Set<String> likedBy = new HashSet<>();
-
-    //알림 설정 필드
-    @Column(name = "notification_enabled", nullable = false)
-    private boolean notificationEnabled = true;
 
 }
 

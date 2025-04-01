@@ -2,6 +2,7 @@ package hello.imagine.community.controller;
 
 import hello.imagine.community.dto.CommentDTO;
 import hello.imagine.community.model.Comment;
+import hello.imagine.community.model.Post;
 import hello.imagine.community.service.CommentService;
 import hello.imagine.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,6 @@ public class CommentController {
         if (userId == null) {
             return ResponseEntity.status(401).build();
         }
-        commentDTO.setAuthorId(userId);
         Comment comment = commentService.createComment(commentDTO);
         return ResponseEntity.ok(comment);
     }
@@ -44,7 +44,6 @@ public class CommentController {
         if (userId == null) {
             return ResponseEntity.status(401).build();
         }
-        commentDTO.setAuthorId(userId);
         Comment updatedComment = commentService.updateComment(commentId, commentDTO);
         return ResponseEntity.ok(updatedComment);
     }

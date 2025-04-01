@@ -1,10 +1,8 @@
 package hello.imagine.community.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -12,19 +10,20 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Category {
+public class CommunityCategory {
 
     // 기본 생성자 (JPA용)
-    public Category() {}
+    public CommunityCategory() {}
 
     // ID와 이름을 설정하는 생성자
-    public Category(Long id, String name) {
-        this.id = id;
+    public CommunityCategory(Long communityCategoryId, String name) {
+        this.id = communityCategoryId;
         this.name = name;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "community_category_id")
     private Long id;
 
     private String name;

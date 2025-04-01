@@ -1,7 +1,7 @@
 package hello.imagine.community.service;
 
 import hello.imagine.community.dto.PostDTO;
-import hello.imagine.community.model.Category;
+import hello.imagine.community.model.CommunityCategory;
 import hello.imagine.community.model.Post;
 import hello.imagine.community.repository.CategoryRepository;
 import hello.imagine.community.repository.PostRepository;
@@ -36,7 +36,7 @@ public class PostService {
                 .orElseThrow(() -> new RuntimeException("Author with ID " + postDTO.getAuthorId() + " not found"));
         post.setAuthor(author);
 
-        Category category = categoryRepository.findById(postDTO.getCategoryId())
+        CommunityCategory category = categoryRepository.findById(postDTO.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category with ID " + postDTO.getCategoryId() + " not found"));
         post.setCategory(category);
 
