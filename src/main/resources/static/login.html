@@ -8,6 +8,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
+
         .container {
             width: 50%;
             margin: 0 auto;
@@ -17,12 +18,15 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .tab {
             display: none;
         }
+
         .tab.active {
             display: block;
         }
+
         .tab-buttons button {
             padding: 10px 20px;
             font-size: 16px;
@@ -32,17 +36,21 @@
             margin: 0 5px;
             border-radius: 5px;
         }
+
         .tab-buttons button.active {
             background-color: #28a745;
             color: white;
         }
+
         .form-group {
             margin: 15px 0;
         }
+
         .form-group label {
             display: block;
             font-size: 18px;
         }
+
         .form-group input {
             width: 100%;
             padding: 10px;
@@ -50,6 +58,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .form-group button {
             padding: 10px 20px;
             font-size: 18px;
@@ -59,9 +68,11 @@
             color: white;
             border-radius: 5px;
         }
+
         .form-group button:hover {
             background-color: #218838;
         }
+
         .error {
             color: red;
             font-size: 14px;
@@ -145,7 +156,7 @@
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: new URLSearchParams({ email: email })
+                body: new URLSearchParams({email: email})
             });
 
             const result = await response.text();
@@ -161,7 +172,7 @@
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: new URLSearchParams({ id: id, email: email })
+                body: new URLSearchParams({id: id, email: email})
             });
 
             const result = await response.text();

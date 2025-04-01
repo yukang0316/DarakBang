@@ -8,12 +8,14 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
+
         .chat-room {
             border: 1px solid #ccc;
             padding: 15px;
             margin: 10px 0;
             cursor: pointer;
         }
+
         #create-room-modal {
             display: none;
             border: 1px solid #ccc;
@@ -41,15 +43,15 @@
 </div>
 
 <script>
-    document.getElementById('create-room-btn').addEventListener('click', function() {
+    document.getElementById('create-room-btn').addEventListener('click', function () {
         document.getElementById('create-room-modal').style.display = 'block';
     });
 
-    document.getElementById('close-modal-btn').addEventListener('click', function() {
+    document.getElementById('close-modal-btn').addEventListener('click', function () {
         document.getElementById('create-room-modal').style.display = 'none';
     });
 
-    document.getElementById('create-room-submit').addEventListener('click', async function() {
+    document.getElementById('create-room-submit').addEventListener('click', async function () {
         const name = document.getElementById('room-name').value;
         const description = document.getElementById('room-description').value;
         const maxParticipants = document.getElementById('max-participants').value;

@@ -7,14 +7,17 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .container {
             width: 80%;
             margin: 0 auto;
             text-align: center;
         }
+
         .header, .category {
             margin: 20px 0;
         }
+
         .category button {
             padding: 15px;
             margin: 5px;
@@ -25,7 +28,7 @@
     </style>
     <script>
         async function createCategory(name) {
-            const category = { name: name };
+            const category = {name: name};
             await fetch("http://localhost:8080/categories/create", {
                 method: "POST",
                 headers: {
@@ -65,11 +68,11 @@
     <div class="category">
         <h2>카테고리별</h2>
         <button onclick="window.location.href='cooking.html'">요리</button>
-<!--        <button onclick="alert('인사 카테고리')">인사</button>-->
-<!--        <button onclick="alert('취미 카테고리')">취미</button>-->
-<!--        <button onclick="alert('건강 카테고리')">건강</button>-->
-<!--        <button onclick="alert('체육 카테고리')">체육</button>-->
-<!--        <button onclick="alert('기타 카테고리')">기타</button>-->
+        <!--        <button onclick="alert('인사 카테고리')">인사</button>-->
+        <!--        <button onclick="alert('취미 카테고리')">취미</button>-->
+        <!--        <button onclick="alert('건강 카테고리')">건강</button>-->
+        <!--        <button onclick="alert('체육 카테고리')">체육</button>-->
+        <!--        <button onclick="alert('기타 카테고리')">기타</button>-->
     </div>
 </div>
 </body>
