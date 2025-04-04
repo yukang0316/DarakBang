@@ -12,7 +12,7 @@ public class CommentDTO {
     public CommentDTO() {
     }
 
-    public CommentDTO(Long categoryId, Long postId, String content) {
+    public CommentDTO(Long postId, String content) {
         this.postId = postId;
         this.content = content;
     }
