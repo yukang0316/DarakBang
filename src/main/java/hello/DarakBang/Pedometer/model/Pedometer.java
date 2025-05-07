@@ -14,8 +14,10 @@ import java.util.Date;
 public class Pedometer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="pedometer_id")
     private Long pedometerId;
+
 
     private Long steps;
 
