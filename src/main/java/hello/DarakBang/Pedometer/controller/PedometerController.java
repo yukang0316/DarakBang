@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pedometers")
 public class PedometerController {
@@ -29,8 +31,16 @@ public class PedometerController {
             return ResponseEntity.status(401).build();
         }
 
-        // userId를 pedometerDTO에 세팅하거나 검증 로직 추가 가능
         Pedometer pedometer = pedometerService.createPedometer(pedometerDTO);
         return ResponseEntity.ok(pedometer);
+    }
+
+    @GetMapping("/{memberId}")
+    public ResponseEntity<List<Pedometer>> getPedometerRecords(@PathVariable Long memberId) {
+        List<Pedometer> pedometers = pedometerService.getPedometerRecordsByMemberId(memberId);
+        if (pedometers.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(pedometers);
     }
 }
