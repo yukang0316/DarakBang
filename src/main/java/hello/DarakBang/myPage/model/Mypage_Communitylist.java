@@ -1,4 +1,4 @@
-package hello.DarakBang.myPage.entity;
+package hello.DarakBang.myPage.model;
 
 import hello.DarakBang.community.model.Post;
 import hello.DarakBang.login.model.Member;

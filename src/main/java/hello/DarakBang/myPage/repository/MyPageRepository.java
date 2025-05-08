@@ -1,6 +1,6 @@
 package hello.DarakBang.myPage.repository;
 
-import hello.DarakBang.myPage.entity.Mypage;
+import hello.DarakBang.myPage.model.Mypage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

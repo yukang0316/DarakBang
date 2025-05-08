@@ -1,7 +1,7 @@
 package hello.DarakBang.myPage.repository;
 
 import hello.DarakBang.login.model.Member;
-import hello.DarakBang.myPage.entity.Mypage_Meetinglist;
+import hello.DarakBang.myPage.model.Mypage_Meetinglist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

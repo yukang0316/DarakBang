@@ -7,12 +7,14 @@ import hello.DarakBang.meeting.repository.MeetingCategoryRepository;
 import hello.DarakBang.meeting.repository.SubcategoryRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
+@DependsOn("meetingCategoryService")
 public class SubcategoryService {
     private final SubcategoryRepository subcategoryRepository;
     private final MeetingCategoryRepository meetingCategoryRepository;

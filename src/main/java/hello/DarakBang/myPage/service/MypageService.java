@@ -3,8 +3,8 @@ package hello.DarakBang.myPage.service;
 import hello.DarakBang.community.model.Post;
 import hello.DarakBang.login.model.Member;
 import hello.DarakBang.meeting.model.Meeting;
-import hello.DarakBang.myPage.entity.Mypage;
-import hello.DarakBang.myPage.entity.Mypage_Meetinglist;
+import hello.DarakBang.myPage.model.Mypage;
+import hello.DarakBang.myPage.model.Mypage_Meetinglist;
 
 import java.util.List;
 
