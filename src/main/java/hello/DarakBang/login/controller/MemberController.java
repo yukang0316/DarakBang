@@ -55,10 +55,16 @@ public class MemberController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Member> getMemberById(@PathVariable String id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<Member> getMemberById(
+            @PathVariable String id,
+            @RequestHeader("Authorization") String token
+    ) {
+        // 1. "Bearer " 접두사 제거
+        String pureToken = token.startsWith("Bearer ") ? token.substring(7).trim() : token.trim();
+
+        // 2. JWT 검증
         UserDetails userDetails = userDetailsService.loadUserByUsername(id);
-        // 토큰 유효성 검증: token과 userDetails를 전달
-        if (jwtUtil.validateToken(token, userDetails)) {
+        if (jwtUtil.validateToken(pureToken, userDetails)) {
             return ResponseEntity.ok(memberService.findById(id));
         } else {
             return ResponseEntity.status(401).build();
