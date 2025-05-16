@@ -5,7 +5,7 @@ FROM openjdk:21-jdk
 WORKDIR /app
 
 # 3. 로컬 jar 파일을 컨테이너의 /app 디렉토리로 복사
-COPY build/libs/darakbang-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/imagine-0.0.1-SNAPSHOT.jar app.jar
 
 # 4. 포트 노출 (Spring Boot 애플리케이션의 기본 포트)
 EXPOSE 8080
