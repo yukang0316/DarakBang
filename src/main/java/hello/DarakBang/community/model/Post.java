@@ -39,12 +39,8 @@ public class Post {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // 좋아요 개수를 저장하는 필드
     private int likeCount = 0;
 
-    // 좋아요를 누른 사용자의 ID를 저장하는 필드
     @ElementCollection
     private Set<String> likedBy = new HashSet<>();
-
 }
-
