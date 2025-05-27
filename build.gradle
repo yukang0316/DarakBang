@@ -44,7 +44,7 @@ tasks.named('test') {
 }
 
 bootJar {
-    archiveFileName = 'imagine-0.0.1-SNAPSHOT.jar'
+    archiveFileName = 'darakbang-0.0.1-SNAPSHOT.jar'
 }
 
 jar {

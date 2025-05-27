@@ -20,7 +20,7 @@ public class CounselController {
     public ResponseEntity<?> chatWithModel(@RequestBody Map<String, Object> request) {
         RestTemplate restTemplate = new RestTemplate();
         //flask 서버 연동
-        String flaskUrl = System.getenv("FLASK_SERVER_URL") + "/chat";
+        String flaskUrl = "http://172.31.33.32:5001/chat";
 
         try {
             // Flask API에 POST 요청 보내기
