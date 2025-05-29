@@ -45,11 +45,14 @@ public class JwtUtil {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return createToken(userDetails.getUsername());
+    public String generateToken(UserDetails userDetails, Long memberId) {
+        return createToken(userDetails.getUsername(), memberId);
     }
 
-    private String createToken(String subject) {
+    private String createToken(String subject, Long memberId) {
+        Claims claims = Jwts.claims().setSubject(subject);
+        claims.put("memberId", memberId);
+
         return Jwts.builder()
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))

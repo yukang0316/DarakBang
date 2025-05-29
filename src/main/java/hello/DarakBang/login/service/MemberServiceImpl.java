@@ -4,6 +4,7 @@ import hello.DarakBang.login.exception.CustomDuplicateException;
 import hello.DarakBang.login.model.Member;
 import hello.DarakBang.login.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 

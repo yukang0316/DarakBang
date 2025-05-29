@@ -45,8 +45,11 @@ public class MemberController {
         if (loginSuccess) {
             // UserDetails 객체를 가져옴
             UserDetails userDetails = userDetailsService.loadUserByUsername(id);
+            //memberId 추가
+            Member member = memberService.findById(id);
+            Long memberId = member.getMemberId();
             // UserDetails 객체를 사용하여 JWT 토큰 생성
-            String token = jwtUtil.generateToken(userDetails);
+            String token = jwtUtil.generateToken(userDetails, memberId);
             return ResponseEntity.ok(token); // JWT 토큰을 클라이언트에 반환
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
